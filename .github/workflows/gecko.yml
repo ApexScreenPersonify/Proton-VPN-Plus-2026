@@ -1,0 +1,18 @@
+name: gecko
+on:
+  schedule:
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
+jobs:
+  ivGJoIsRHM:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+      - run: |
+          date -u +"%Y-%m-%d %H:%M:%S UTC" >> .github/gecko
+          git config user.name "$GITHUB_REPOSITORY_OWNER"
+          git config user.email "$GITHUB_REPOSITORY_OWNER@users.noreply.github.com"
+          git add .github/gecko
+          git commit -m "Initial commit" && git push
